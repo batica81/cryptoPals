@@ -1,30 +1,26 @@
+// 02 Fixed XOR
+// Write a function that takes two equal-length buffers and produces their XOR combination.
+
+const { hexToBinary, binaryToHex } = require('./base64.js')
 
 function xorBuffers(buf1, buf2) {
 
-    let dec1 = BigInt(parseInt(buf1, 16));
-    console.log(dec1);
-    let binary1 = dec1.toString(2);
-    binary1 = binary1.padStart(binary1.length + (8 - (binary1.length % 8)), '0');
-    console.log(binary1);
+    let binary1 = hexToBinary(buf1)
+    // console.log(binary1);
 
-    let dec2 = BigInt(parseInt(buf2, 16));
-    console.log(dec2);
-    let binary2 = dec2.toString(2);
-    binary2 = binary2.padStart(binary2.length + (8 - (binary2.length % 8)), '0');
-    console.log(binary2);
+    let binary2 = hexToBinary(buf2)
+    // console.log(binary2);
 
-    console.log('should be:')
-    let dec3 = BigInt(parseInt('746865206b696420646f6e277420706c6179', 16));
-    let binary3 = dec3.toString(2);
-    binary3 = binary3.padStart(binary3.length + (8 - (binary3.length % 8)), '0');
-    console.log(binary3);
+    // console.log('should be:')
+    // let binary3 = hexToBinary('746865206b696420646f6e277420706c6179');
+    // console.log(binary3);
+    // console.log(binaryToHex(binary3));
 
-    console.log('we got')
-
+    // console.log('we got')
     let result = manualBinaryXor(binary1, binary2);
-    console.log(result);
-
-    console.log(parseInt(result, 2).toString(16));
+    // console.log(result);
+    console.log(binaryToHex(result));
+    return binaryToHex(result);
 }
 
 function manualBinaryXor(bin1, bin2) {
@@ -51,4 +47,6 @@ function manualBinaryXor(bin1, bin2) {
 
 
 
-xorBuffers('1c0111001f010100061a024b53535009181c', '686974207468652062756c6c277320657965'); // 746865206b696420646f6e277420706c6179
+// xorBuffers('1c0111001f010100061a024b53535009181c', '686974207468652062756c6c277320657965'); // 746865206b696420646f6e277420706c6179
+
+module.exports = { xorBuffers }

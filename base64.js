@@ -1,8 +1,6 @@
+// 01 Convert hex to base64
 
-function hexToBase64(inputString) {
-
-    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'.split('');
-
+function hexToBinary(inputString) {
     inputString = inputString.toLowerCase();
 
     if (inputString.length % 2 !== 0) {
@@ -23,10 +21,37 @@ function hexToBase64(inputString) {
         binaryResult += lowBinary + highBinary
 
     }
+    // console.log(binaryResult)
+
+    return binaryResult;
+
+}
+
+function binaryToHex(inputString) {
+    if (inputString.length % 8 !== 0) {
+        throw new Error("Invalid binary string");
+    }
+    let hexResult = '';
 
     let chunks = [];
 
-    for (var j = 0, charsLength = binaryResult.length; j < charsLength; j += 6) {
+    for (let j = 0; j < inputString.length; j += 4) {
+        chunks.push((parseInt(inputString.substring(j, j + 4),2)).toString(16));
+    }
+
+    // console.log(chunks.join(''));
+    return chunks.join('');
+
+}
+function hexToBase64(inputString) {
+
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'.split('');
+
+    let binaryResult = hexToBinary(inputString);
+
+    let chunks = [];
+
+    for (let j = 0; j < binaryResult.length; j += 6) {
         chunks.push(parseInt(binaryResult.substring(j, j + 6),2));
     }
 
@@ -44,9 +69,10 @@ function hexToBase64(inputString) {
 
 }
 
-hexToBase64('49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d')
+// hexToBase64('49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d')
 
 // should be: SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t
 
+// binaryToHex('011101000110100001100101001000000110101101101001011001000010000001100100011011110110111000100111011101000010000001110000011011000110000101111001')
 
-
+module.exports = { hexToBinary, binaryToHex }
