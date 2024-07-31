@@ -31,7 +31,34 @@ let scoring =
         "4D": 15.36,
         "4E": 33.92,
         "4F": 36.51,
-        "5A": 1.39
+        "5A": 1.39,
+
+        "61": 43.31,
+        "62": 10.56,
+        "63": 23.13,
+        "64": 17.25,
+        "65": 56.88,
+        "66": 9.24,
+        "67": 12.59,
+        "68": 15.31,
+        "69": 38.45,
+        "70": 16.14,
+        "71": 1,
+        "72": 38.64,
+        "73": 29.23,
+        "74": 35.43,
+        "75": 18.51,
+        "76": 5.13,
+        "77": 6.57,
+        "78": 1.48,
+        "79": 9.06,
+        "6A": 1,
+        "6B": 5.61,
+        "6C": 27.98,
+        "6D": 15.36,
+        "6E": 33.92,
+        "6F": 36.51,
+        "7A": 1.39
     }
 
 let finishedResult = []
@@ -70,7 +97,7 @@ function analyzeResult(testBuffer, fullKey, cypherText) {
     let score = 0;
 
     for (let i = 0; i < testBuffer.length; i+=2) {
-        let tmpChar = testBuffer[i] + testBuffer[i + 1];
+        let tmpChar = (testBuffer[i] + testBuffer[i + 1]).toUpperCase();
         // console.log(scoring[tmpChar])
         if (scoring[tmpChar] !== undefined) {
             score += scoring[tmpChar]
