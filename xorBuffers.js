@@ -19,7 +19,7 @@ function xorBuffers(buf1, buf2) {
     // console.log('we got')
     let result = manualBinaryXor(binary1, binary2);
     // console.log(result);
-    console.log(binaryToHex(result));
+    // console.log(binaryToHex(result));
     return binaryToHex(result);
 }
 
