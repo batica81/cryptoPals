@@ -137,6 +137,15 @@ function hexToAscii(str){
     return strOut;
 }
 
+function asciiToHex(str) {
+    let hex = '';
+    for (let i = 0; i < str.length; i++) {
+        hex += '' + str.charCodeAt(i).toString(16);
+    }
+    return hex;
+
+}
+
 // testKeys(cypherText)
 
 // finishedResult.sort((a, b) => a.score - b.score)
@@ -144,7 +153,7 @@ function hexToAscii(str){
 
 // console.log(finishedResult)
 
-module.exports = { testKeys }
+module.exports = { testKeys, hexToAscii, asciiToHex }
 
 
 // {
