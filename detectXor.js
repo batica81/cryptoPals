@@ -1,3 +1,4 @@
+// 04. Detect single-character XOR
 const fs = require('node:fs');
 const { testKeys } = require('./unXor')
 
@@ -32,7 +33,7 @@ resArray.forEach(function(element) {
 
 allResultsEver.sort((a, b) => a.score - b.score)
 
-console.log('allResultsEver')
+console.log(allResultsEver)
 
 // {
 //     "cypherText": "7b5a4215415d544115415d5015455447414c155c46155f4058455c5b523f",
